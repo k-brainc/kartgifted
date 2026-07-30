@@ -69,7 +69,23 @@ ul{list-style:none;}
   overflow:hidden; border-bottom:1px solid var(--line);
 }
 .hero::after{content:""; position:absolute; inset:0; background-image:radial-gradient(rgba(28,29,31,.05) 1px, transparent 1px); background-size:16px 16px; mask-image:linear-gradient(to bottom, black, transparent 70%); pointer-events:none;}
-.hero-inner{position:relative; z-index:1;}
+.hero-inner{position:relative; z-index:2;}
+
+/* 히어로 배경 동영상 */
+.hero-video-layer{position:absolute; inset:0; z-index:0; overflow:hidden; background:var(--teal-deep);}
+.hero-video-layer video{width:100%; height:100%; object-fit:cover; display:block;}
+.hero-video-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(12,16,18,.58), rgba(12,16,18,.74));}
+.hero.has-video::after{display:none;}
+.hero.has-video{border-bottom-color:transparent;}
+.hero.has-video .eyebrow{color:#ffb7a8;}
+.hero.has-video .eyebrow::before{background:#ffb7a8;}
+.hero.has-video h1{color:#fff;}
+.hero.has-video h1 em{color:#7fd6ea;}
+.hero.has-video p.lead{color:#dfe6e8;}
+.hero.has-video .field-badge{background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.28); color:#fff;}
+.hero.has-video .hero-meta div{border-color:rgba(255,255,255,.3);}
+.hero.has-video .hero-meta .k{color:#b9c8cc;}
+.hero.has-video .hero-meta .v{color:#fff;}
 .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700; letter-spacing:.14em; color:var(--dancheong); text-transform:uppercase; margin-bottom:18px;}
 .eyebrow::before{content:""; width:22px; height:1px; background:var(--dancheong);}
 .hero h1{font-family:var(--font-display); font-weight:900; font-size:clamp(30px,4.6vw,50px); line-height:1.2; letter-spacing:-.01em; max-width:820px;}
@@ -224,7 +240,11 @@ table.roster tr:hover td{background:var(--bg-soft);}
 </header>
 
 <main id="view-home">
-  <section class="hero">
+  <section class="hero" id="hero-section">
+    <div class="hero-video-layer" id="hero-video-layer" style="display:none;">
+      <video id="hero-video" autoplay muted loop playsinline></video>
+      <div class="hero-video-overlay"></div>
+    </div>
     <div class="wrap hero-inner">
       <span class="eyebrow" id="hero-eyebrow">2026 K-ARTS TALENT ARCHIVE</span>
       <h1 id="hero-title"></h1>
@@ -362,7 +382,8 @@ const DEFAULT_DATA = {
       {k:"회차", v:"총 5회 · 7.29 ~ 8.29"}
     ],
     address:["한국예술종합학교 석관동 캠퍼스","서울특별시 성북구 화랑로32길 146-37","k-arts-archive@project.kr"],
-    footerCopy:"© 2026 K예술영재 프로젝트. All Rights Reserved."
+    footerCopy:"© 2026 K예술영재 프로젝트. All Rights Reserved.",
+    heroVideo:{type:"none", url:"", dataUrl:""}
   },
   fields:[
     {id:"traditional", label:"전통예술", color:"#AC3B2F"},
@@ -547,6 +568,22 @@ function renderChrome(){
   document.getElementById('footer-brand-name').textContent = m.brandName;
   document.getElementById('footer-address').innerHTML = m.address.map(a=>`<li>${a}</li>`).join('');
   document.getElementById('footer-copy').textContent = m.footerCopy;
+
+  // 히어로 배경 동영상
+  const heroSection = document.getElementById('hero-section');
+  const heroLayer = document.getElementById('hero-video-layer');
+  const heroVideoEl = document.getElementById('hero-video');
+  const hv = m.heroVideo || {type:'none'};
+  const src = hv.type==='upload' ? hv.dataUrl : (hv.type==='url' ? hv.url : '');
+  if(src){
+    if(heroVideoEl.getAttribute('src') !== src) heroVideoEl.setAttribute('src', src);
+    heroLayer.style.display = 'block';
+    heroSection.classList.add('has-video');
+    heroVideoEl.play().catch(()=>{});
+  }else{
+    heroLayer.style.display = 'none';
+    heroSection.classList.remove('has-video');
+  }
 
   document.getElementById('gnb').innerHTML = DATA.menu.map(x=>`<a href="${x.href}">${x.label}</a>`).join('');
 
