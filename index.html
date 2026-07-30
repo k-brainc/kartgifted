@@ -71,9 +71,10 @@ ul{list-style:none;}
 .hero::after{content:""; position:absolute; inset:0; background-image:radial-gradient(rgba(28,29,31,.05) 1px, transparent 1px); background-size:16px 16px; mask-image:linear-gradient(to bottom, black, transparent 70%); pointer-events:none;}
 .hero-inner{position:relative; z-index:2;}
 
-/* 히어로 배경 동영상 */
+/* 히어로 배경 동영상 (mp4 직접재생 또는 유튜브/Vimeo 임베드) */
 .hero-video-layer{position:absolute; inset:0; z-index:0; overflow:hidden; background:var(--teal-deep);}
-.hero-video-layer video{width:100%; height:100%; object-fit:cover; display:block;}
+.hero-video-layer video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;}
+.hero-video-layer iframe{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); border:0; pointer-events:none;}
 .hero-video-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(12,16,18,.58), rgba(12,16,18,.74));}
 .hero.has-video::after{display:none;}
 .hero.has-video{border-bottom-color:transparent;}
@@ -241,10 +242,7 @@ table.roster tr:hover td{background:var(--bg-soft);}
 
 <main id="view-home">
   <section class="hero" id="hero-section">
-    <div class="hero-video-layer" id="hero-video-layer" style="display:none;">
-      <video id="hero-video" autoplay muted loop playsinline></video>
-      <div class="hero-video-overlay"></div>
-    </div>
+    <div class="hero-video-layer" id="hero-video-layer" style="display:none;"></div>
     <div class="wrap hero-inner">
       <span class="eyebrow" id="hero-eyebrow">2026 K-ARTS TALENT ARCHIVE</span>
       <h1 id="hero-title"></h1>
@@ -526,6 +524,78 @@ function fieldOf(id){ return (DATA.fields||[]).find(f=>f.id===id); }
 function fieldLabel(id){ const f=fieldOf(id); return f? f.label : id; }
 function fieldColor(id){ const f=fieldOf(id); return f? f.color : '#999'; }
 
+/* ---------------- 히어로 배경 동영상: 유튜브/Vimeo/mp4 자동 감지 ---------------- */
+function parseYouTubeId(url){
+  if(!url) return null;
+  const m = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
+  return m ? m[1] : null;
+}
+function parseVimeoId(url){
+  if(!url) return null;
+  const m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  return m ? m[1] : null;
+}
+function sizeCoverIframe(iframe){
+  function resize(){
+    const layer = iframe.parentElement;
+    if(!layer) return;
+    const w = layer.clientWidth || window.innerWidth;
+    const h = layer.clientHeight || window.innerHeight;
+    const ratio = 16/9;
+    if(w/h > ratio){ iframe.style.width = w+'px'; iframe.style.height = Math.ceil(w/ratio)+'px'; }
+    else{ iframe.style.height = h+'px'; iframe.style.width = Math.ceil(h*ratio)+'px'; }
+  }
+  resize();
+  window.addEventListener('resize', resize);
+}
+function applyHeroVideo(hv){
+  const heroSection = document.getElementById('hero-section');
+  const layer = document.getElementById('hero-video-layer');
+  layer.innerHTML = '';
+  const src = hv.type==='upload' ? hv.dataUrl : (hv.type==='url' ? hv.url : '');
+  if(!src){
+    layer.style.display = 'none';
+    heroSection.classList.remove('has-video');
+    return;
+  }
+  heroSection.classList.add('has-video');
+  layer.style.display = 'block';
+
+  let media;
+  if(hv.type==='upload'){
+    media = document.createElement('video');
+    media.autoplay = true; media.muted = true; media.loop = true; media.playsInline = true;
+    media.src = src;
+    layer.appendChild(media);
+  }else{
+    const yt = parseYouTubeId(src);
+    const vm = !yt ? parseVimeoId(src) : null;
+    if(yt){
+      media = document.createElement('iframe');
+      media.src = `https://www.youtube.com/embed/${yt}?autoplay=1&mute=1&loop=1&playlist=${yt}&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1`;
+      media.setAttribute('allow','autoplay; encrypted-media');
+      media.setAttribute('frameborder','0');
+      layer.appendChild(media);
+      sizeCoverIframe(media);
+    }else if(vm){
+      media = document.createElement('iframe');
+      media.src = `https://player.vimeo.com/video/${vm}?autoplay=1&muted=1&loop=1&background=1`;
+      media.setAttribute('allow','autoplay; fullscreen');
+      media.setAttribute('frameborder','0');
+      layer.appendChild(media);
+      sizeCoverIframe(media);
+    }else{
+      media = document.createElement('video');
+      media.autoplay = true; media.muted = true; media.loop = true; media.playsInline = true;
+      media.src = src;
+      layer.appendChild(media);
+    }
+  }
+  const overlay = document.createElement('div');
+  overlay.className = 'hero-video-overlay';
+  layer.appendChild(overlay);
+}
+
 async function loadData(){
   // 1) 실제 배포된 data.json 우선
   try{
@@ -570,20 +640,7 @@ function renderChrome(){
   document.getElementById('footer-copy').textContent = m.footerCopy;
 
   // 히어로 배경 동영상
-  const heroSection = document.getElementById('hero-section');
-  const heroLayer = document.getElementById('hero-video-layer');
-  const heroVideoEl = document.getElementById('hero-video');
-  const hv = m.heroVideo || {type:'none'};
-  const src = hv.type==='upload' ? hv.dataUrl : (hv.type==='url' ? hv.url : '');
-  if(src){
-    if(heroVideoEl.getAttribute('src') !== src) heroVideoEl.setAttribute('src', src);
-    heroLayer.style.display = 'block';
-    heroSection.classList.add('has-video');
-    heroVideoEl.play().catch(()=>{});
-  }else{
-    heroLayer.style.display = 'none';
-    heroSection.classList.remove('has-video');
-  }
+  applyHeroVideo(m.heroVideo || {type:'none'});
 
   document.getElementById('gnb').innerHTML = DATA.menu.map(x=>`<a href="${x.href}">${x.label}</a>`).join('');
 
