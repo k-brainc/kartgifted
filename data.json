@@ -1,0 +1,469 @@
+{
+  "meta": {
+    "brandBadge": "藝",
+    "brandName": "K예술영재 프로젝트",
+    "brandSub": "2026 통합 워크숍 아카이브",
+    "ctaLabel": "최근 회차 보기",
+    "ctaHref": "#/session/1",
+    "heroEyebrow": "2026 K-ARTS TALENT ARCHIVE",
+    "heroTitle": "네 개의 재능,<br>다섯 번의 <em>만남</em>",
+    "heroLead": "2026 K예술영재 프로젝트는 전통예술·미술·음악·무용 4개 분야에서 선발된 영재들이 함께 성장하는 통합 워크숍입니다. 회차별 진행 기록과 자료를 한자리에 모았습니다.",
+    "heroMeta": [
+      {
+        "k": "주최",
+        "v": "K예술영재 프로젝트 추진단"
+      },
+      {
+        "k": "장소",
+        "v": "한국예술종합학교 석관동 캠퍼스"
+      },
+      {
+        "k": "분야",
+        "v": "전통예술·미술·음악·무용 (4개 분야)"
+      },
+      {
+        "k": "회차",
+        "v": "총 5회 · 7.29 ~ 8.29"
+      }
+    ],
+    "address": [
+      "한국예술종합학교 석관동 캠퍼스",
+      "서울특별시 성북구 화랑로32길 146-37",
+      "k-arts-archive@project.kr"
+    ],
+    "footerCopy": "© 2026 K예술영재 프로젝트. All Rights Reserved.",
+    "heroVideo": {
+      "type": "url",
+      "url": "https://youtu.be/hiXbSmEy958",
+      "dataUrl": ""
+    }
+  },
+  "fields": [
+    {
+      "id": "traditional",
+      "label": "전통예술",
+      "color": "#AC3B2F"
+    },
+    {
+      "id": "art",
+      "label": "미술",
+      "color": "#B08A4E"
+    },
+    {
+      "id": "music",
+      "label": "음악",
+      "color": "#176C86"
+    },
+    {
+      "id": "dance",
+      "label": "무용",
+      "color": "#5B3A8E"
+    }
+  ],
+  "menu": [
+    {
+      "label": "아카이브 홈",
+      "href": "#/"
+    },
+    {
+      "label": "회차별 기록",
+      "href": "#/"
+    },
+    {
+      "label": "분야별 보기",
+      "href": "#/"
+    },
+    {
+      "label": "참가자 명단",
+      "href": "#/"
+    }
+  ],
+  "notices": [
+    {
+      "title": "개회식(1회) 참가자 사전 안내",
+      "date": "07.25"
+    },
+    {
+      "title": "2회차 우천 시 일정 안내",
+      "date": "08.13"
+    },
+    {
+      "title": "폐회식 발표회 좌석 배치 공지",
+      "date": "08.27"
+    }
+  ],
+  "updates": [
+    {
+      "title": "2회차 사진·영상 갤러리 업로드",
+      "date": "NEW"
+    },
+    {
+      "title": "1회차 자료실 등록",
+      "date": "08.02"
+    },
+    {
+      "title": "참가 학생·강사 명단 갱신",
+      "date": "08.10"
+    }
+  ],
+  "quicklinks": [
+    {
+      "title": "2026 전체 프로그램북 (PDF)",
+      "tag": "PDF"
+    },
+    {
+      "title": "워크숍 운영 매뉴얼",
+      "tag": "PDF"
+    },
+    {
+      "title": "참가자 안내 리플렛",
+      "tag": "HTML"
+    }
+  ],
+  "sessions": [
+    {
+      "id": 1,
+      "day": "7.29",
+      "weekday": "수",
+      "label": "개회식",
+      "name": "1회차 · 개회식 & 오리엔테이션",
+      "sub": "4개 분야 영재들이 처음 모이는 자리 — 개회식, 분야 소개, 팀 편성",
+      "date": "2026.07.29(수) 10:00–17:00",
+      "place": "한국예술종합학교 석관동 캠퍼스 · 대극장",
+      "count": "학생 96명 · 강사 16명",
+      "status": "완료",
+      "fields": [
+        "traditional",
+        "art",
+        "music",
+        "dance"
+      ],
+      "gallery": [
+        {
+          "type": "photo",
+          "label": "개회식 전경"
+        },
+        {
+          "type": "photo",
+          "label": "축사 및 인사말"
+        },
+        {
+          "type": "video",
+          "label": "개회식 하이라이트 영상"
+        },
+        {
+          "type": "photo",
+          "label": "분야별 오리엔테이션"
+        },
+        {
+          "type": "photo",
+          "label": "팀 편성 활동"
+        },
+        {
+          "type": "photo",
+          "label": "단체 기념촬영"
+        }
+      ],
+      "files": [
+        {
+          "name": "1회차 프로그램북.pdf",
+          "desc": "당일 진행 순서 및 세부 일정",
+          "type": "PDF"
+        },
+        {
+          "name": "MC 진행 스크립트.docx",
+          "desc": "개회식 사회자 대본",
+          "type": "DOC"
+        }
+      ],
+      "roster": [
+        {
+          "role": "student",
+          "field": "traditional",
+          "name": "김서연",
+          "major": "전통무용",
+          "org": "서울예술고등학교",
+          "note": "조장"
+        },
+        {
+          "role": "student",
+          "field": "art",
+          "name": "이하람",
+          "major": "한국화",
+          "org": "예원학교",
+          "note": ""
+        },
+        {
+          "role": "student",
+          "field": "music",
+          "name": "박도현",
+          "major": "작곡",
+          "org": "예원학교",
+          "note": ""
+        },
+        {
+          "role": "student",
+          "field": "dance",
+          "name": "최유나",
+          "major": "현대무용",
+          "org": "선화예술중학교",
+          "note": ""
+        },
+        {
+          "role": "faculty",
+          "field": "traditional",
+          "name": "윤서인",
+          "major": "전통무용 지도",
+          "org": "한국예술종합학교",
+          "note": "수석강사"
+        },
+        {
+          "role": "faculty",
+          "field": "art",
+          "name": "오세인",
+          "major": "회화 지도",
+          "org": "국립현대미술관",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "day": "8.15",
+      "weekday": "토",
+      "label": "본과정",
+      "name": "2회차 · 분야별 심화 워크숍 Ⅰ",
+      "sub": "4개 분야 각각의 전공 실기 수업 및 조별 실습",
+      "date": "2026.08.15(토) 10:00–17:00",
+      "place": "한국예술종합학교 석관동 캠퍼스 · 분야별 실습동",
+      "count": "학생 96명 · 강사 14명",
+      "status": "완료",
+      "fields": [
+        "traditional",
+        "dance"
+      ],
+      "gallery": [
+        {
+          "type": "photo",
+          "label": "전통무용 기본 동작 지도"
+        },
+        {
+          "type": "photo",
+          "label": "조별 실습 현장"
+        },
+        {
+          "type": "video",
+          "label": "수업 요약 영상"
+        },
+        {
+          "type": "photo",
+          "label": "강사 시연"
+        }
+      ],
+      "files": [
+        {
+          "name": "2회차 커리큘럼.pdf",
+          "desc": "장르별 실기 수업 커리큘럼",
+          "type": "PDF"
+        }
+      ],
+      "roster": [
+        {
+          "role": "student",
+          "field": "traditional",
+          "name": "정민준",
+          "major": "판소리",
+          "org": "국립국악고등학교",
+          "note": "조장"
+        },
+        {
+          "role": "student",
+          "field": "dance",
+          "name": "최유나",
+          "major": "현대무용",
+          "org": "선화예술중학교",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "day": "8.17",
+      "weekday": "월",
+      "label": "본과정",
+      "name": "3회차 · 분야별 심화 워크숍 Ⅱ",
+      "sub": "미술·음악 분야 이론 강의와 실습",
+      "date": "2026.08.17(월) 10:00–17:00",
+      "place": "한국예술종합학교 석관동 캠퍼스 · 분야별 실습동",
+      "count": "학생 96명 · 강사 14명",
+      "status": "완료",
+      "fields": [
+        "art",
+        "music"
+      ],
+      "gallery": [
+        {
+          "type": "photo",
+          "label": "회화 실기 수업"
+        },
+        {
+          "type": "photo",
+          "label": "작곡 이론 강의"
+        },
+        {
+          "type": "video",
+          "label": "실습 영상"
+        },
+        {
+          "type": "photo",
+          "label": "악기 체험"
+        }
+      ],
+      "files": [
+        {
+          "name": "3회차 교재.pdf",
+          "desc": "미술·음악 이론 강의 교재",
+          "type": "PDF"
+        }
+      ],
+      "roster": [
+        {
+          "role": "student",
+          "field": "art",
+          "name": "이하람",
+          "major": "한국화",
+          "org": "예원학교",
+          "note": ""
+        },
+        {
+          "role": "student",
+          "field": "music",
+          "name": "박도현",
+          "major": "작곡",
+          "org": "예원학교",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "day": "8.23",
+      "weekday": "일",
+      "label": "본과정",
+      "name": "4회차 · 통합 합동 리허설",
+      "sub": "발표회를 위한 4개 분야 합동 리허설 및 무대 동선 점검",
+      "date": "2026.08.23(일) 10:00–18:00",
+      "place": "한국예술종합학교 석관동 캠퍼스 · 대극장",
+      "count": "학생 96명 · 강사 16명",
+      "status": "완료",
+      "fields": [
+        "traditional",
+        "art",
+        "music",
+        "dance"
+      ],
+      "gallery": [
+        {
+          "type": "photo",
+          "label": "무대 동선 점검"
+        },
+        {
+          "type": "photo",
+          "label": "조명·음향 리허설"
+        },
+        {
+          "type": "video",
+          "label": "리허설 현장 스케치"
+        },
+        {
+          "type": "photo",
+          "label": "전시 셋업(미술)"
+        }
+      ],
+      "files": [
+        {
+          "name": "4회차 무대 동선표.pdf",
+          "desc": "발표회 무대 동선 및 큐시트",
+          "type": "PDF"
+        },
+        {
+          "name": "미술 전시 배치도.pdf",
+          "desc": "미술 분야 전시 공간 배치",
+          "type": "PDF"
+        }
+      ],
+      "roster": [
+        {
+          "role": "faculty",
+          "field": "music",
+          "name": "한지훈",
+          "major": "작곡 지도",
+          "org": "국립합창단",
+          "note": ""
+        },
+        {
+          "role": "faculty",
+          "field": "dance",
+          "name": "신은서",
+          "major": "무용 지도",
+          "org": "국립무용단",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "day": "8.29",
+      "weekday": "토",
+      "label": "폐회식",
+      "name": "5회차 · 폐회식 & 성과 발표회",
+      "sub": "전 과정을 마무리하는 4개 분야 합동 성과 발표회 및 수료식",
+      "date": "2026.08.29(토) 14:00–19:00",
+      "place": "한국예술종합학교 석관동 캠퍼스 · 대극장 · 전시홀",
+      "count": "학생 96명 · 강사 16명 · 내빈 다수",
+      "status": "예정",
+      "fields": [
+        "traditional",
+        "art",
+        "music",
+        "dance"
+      ],
+      "gallery": [
+        {
+          "type": "photo",
+          "label": "발표회 무대"
+        },
+        {
+          "type": "photo",
+          "label": "미술 전시 오프닝"
+        },
+        {
+          "type": "video",
+          "label": "폐회식 풀영상"
+        },
+        {
+          "type": "photo",
+          "label": "수료증 전달식"
+        }
+      ],
+      "files": [
+        {
+          "name": "5회차 프로그램북.pdf",
+          "desc": "발표회 순서 및 출연진·전시작 소개",
+          "type": "PDF"
+        },
+        {
+          "name": "MC 진행 스크립트.docx",
+          "desc": "폐회식·발표회 사회자 대본",
+          "type": "DOC"
+        },
+        {
+          "name": "수료증 명단.xlsx",
+          "desc": "수료 대상자 명단",
+          "type": "XLS"
+        }
+      ],
+      "roster": []
+    }
+  ]
+}
